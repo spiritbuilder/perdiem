@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "115028048633",
+    "project_id": "perdiem-40cf5",
+    "storage_bucket": "perdiem-40cf5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115028048633:android:182f7c39fe484bffa78028",
+        "android_client_info": {
+          "package_name": "com.timtimpro.perdiem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115028048633-jdgh4vk6fqe5jgvvf2nt4kk5bb1v4ojt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.timtimpro.perdiem",
+            "certificate_hash": "c7ca8b24fa4756678cccbfdf0dbb390a0f69249f"
+          }
+        },
+        {
+          "client_id": "115028048633-cau67vu4du5cpa577l3u79maajnrh2ru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKxyWmEu8vrXw1jnUPZiKxIfutyxhmyCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115028048633-cau67vu4du5cpa577l3u79maajnrh2ru.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "115028048633-13tbf72vhei20i1t5bjkc7rpl032lmbh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.timtimpro.perdiem"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
