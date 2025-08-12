@@ -1,9 +1,14 @@
 import CustomButton from "@/components/CustomButton";
-import { PickerData } from "@/components/CustomDatePicker";
 import CustomInput from "@/components/CustomInput";
-import { AppContext } from "@/context/AppContext";
+import { AppContext, ContextData } from "@/context/AppContext";
 import { ApiService } from "@/services/apiService";
 
+import {
+  GoogleSignin,
+  isErrorWithCode,
+  isSuccessResponse,
+  statusCodes,
+} from "@react-native-google-signin/google-signin";
 import { useRouter } from "expo-router";
 import { useFormik } from "formik";
 import { useContext, useEffect, useState } from "react";
@@ -17,6 +22,8 @@ const signInSchema = yup.object({
   email: yup.string().email("Please enter a valid email").required(),
   password: yup.string().min(6).required(),
 });
+
+GoogleSignin.configure();
 
 export default function Login() {
   const router = useRouter();
@@ -50,7 +57,55 @@ export default function Login() {
     }
   }, []);
 
+  const handleSignInProcess = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const response = await GoogleSignin.signIn();
+      if (isSuccessResponse(response)) {
+        let appDetails: ContextData = {
+          user: { ...response.data.user, token: "" },
+        };
+        console.log(response.data);
+        const { res, e } = await ApiService.signInWithEmail({
+          email: "user@tryperdiem.com",
+          password: "password",
+        });
 
+        if (res.data && appDetails.user) {
+          appDetails.user.token = res.data.token;
+        }
+
+        // console.log(res, e);
+
+        setAppState?.(appDetails);
+        router.navigate("/Home");
+      } else {
+        // sign in was cancelled by user
+
+        Alert.alert("Sign in cancelled");
+      }
+    } catch (error) {
+      console.log(error);
+      if (isErrorWithCode(error)) {
+        switch (error.code) {
+          case statusCodes.IN_PROGRESS:
+            Alert.alert("Sign in already in progress");
+            // operation (eg. sign in) already in progress
+            break;
+          case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
+            Alert.alert("Sign in services not available");
+            // Android only, play services not available or outdated
+            break;
+          default:
+            Alert.alert("Something went wrong, please try again");
+          // some other error happened
+        }
+      } else {
+        Alert.alert("Something went wrong, please try again.");
+        // an error that's not related to google sign in occurred
+      }
+    }
+  };
 
   return (
     <SafeAreaView style={styles.background}>
@@ -92,7 +147,10 @@ export default function Login() {
 
         <View style={styles.divider} />
 
-        <CustomButton text="Sign In with Google" onPress={() => {}} />
+        <CustomButton
+          text="Sign In with Google"
+          onPress={handleSignInProcess}
+        />
       </View>
     </SafeAreaView>
   );

@@ -1,4 +1,4 @@
-package com.perd
+package com.timtimpro.perd
 
 import android.app.Application
 import android.content.res.Configuration

@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>115028048633-13tbf72vhei20i1t5bjkc7rpl032lmbh.apps.googleusercontent.com</string>
+	<string>115028048633-rpek0sr3vsjd9vgn81mka09rcssgfjqd.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.115028048633-13tbf72vhei20i1t5bjkc7rpl032lmbh</string>
+	<string>com.googleusercontent.apps.115028048633-rpek0sr3vsjd9vgn81mka09rcssgfjqd</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>115028048633-5qnim41dbm5qtjami96q3r56epseqg91.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDsQJ5dFPj16atiZdTtDIEZ9jYIlMtxOXA</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.timtimpro.perdiem</string>
+	<string>com.timtimpro.perd</string>
 	<key>PROJECT_ID</key>
 	<string>perdiem-40cf5</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:115028048633:ios:89fbda4588352c99a78028</string>
+	<string>1:115028048633:ios:c2c6a0123961a987a78028</string>
 </dict>
 </plist>

@@ -1,10 +1,11 @@
+import { User } from "@react-native-google-signin/google-signin";
 import { createContext, useState } from "react";
 
-interface ContextData {
+export interface ContextData {
   user?: {
     email: string;
     token: string;
-  };
+  } & Partial<User["user"]>;
 }
 
 interface Context extends ContextData {

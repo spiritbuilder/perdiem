@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     gap: 6,
     alignItems: "center",
     flexDirection: "row",
+    width: "100%",
   },
 
   image: {
@@ -36,5 +37,6 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "800",
     fontSize: 16,
+    textTransform: "capitalize",
   },
 });

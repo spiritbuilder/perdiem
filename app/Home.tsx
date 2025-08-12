@@ -123,7 +123,7 @@ const Home = () => {
 
   useEffect(() => {
     determineIfStoreIsOpen();
-  }, []);
+  }, [usingLocalTime]);
 
   useEffect(() => {
     intialiseStorage();
@@ -169,7 +169,6 @@ const Home = () => {
     const hour = selectionDetails?.date?.hour() || 0;
     const minute = selectionDetails?.date?.minute() || 0;
 
-
     let currentTime = `${hour < 10 ? "0" : ""}${hour}:${
       minute < 10 ? "0" : ""
     }${minute}`;
@@ -192,7 +191,10 @@ const Home = () => {
       )}
 
       <View style={styles.wrapper}>
-        <Avatar name={user?.email} />
+        <Avatar
+          icon={user?.photo ?? undefined}
+          name={user?.name ?? user?.email}
+        />
 
         <Text style={styles.greeting}>{salutation.greeting}</Text>
 

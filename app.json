@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.timtimpro.perdiem",
+      "bundleIdentifier": "com.timtimpro.perd",
       "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
@@ -19,7 +19,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.timtimpro.perdiem",
+      "package": "com.timtimpro.perd",
       "googleServicesFile": "./google-services.json"
     },
     "web": {
@@ -42,14 +42,20 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/logo.png",
+          "icon": "./assets/images/logo.png",
           "color": "#ffffff",
           "defaultChannel": "default",
           "sounds": ["./assets/notification_sound.wav"],
           "enableBackgroundRemoteNotifications": false
         }
       ],
-      "@react-native-google-signin/google-signin"
+      "@react-native-google-signin/google-signin/app.plugin.js",
+      [
+        "expo-dev-client",
+        {
+          "launchMode": "most-recent"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

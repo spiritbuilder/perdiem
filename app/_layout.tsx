@@ -10,7 +10,10 @@ import "react-native-reanimated";
 
 import { AppContext, AppContextProvider } from "@/context/AppContext";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { useContext } from "react";
+
+
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -35,6 +38,7 @@ export default function RootLayout() {
 
 const Layout = () => {
   const { user } = useContext(AppContext);
+
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />

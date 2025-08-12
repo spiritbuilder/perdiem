@@ -25,16 +25,17 @@ function requestPermissionsAsync() {
 async function setNotification(
   title: string,
   body: string,
-  dateTime: Date = new Date()
+  dateTime: Date | undefined = undefined
 ) {
-  let notifications = await Notifications.getAllScheduledNotificationsAsync();
+  let _dateTime = dateTime ? dateTime : new Date();
 
+  let notifications = await Notifications.getAllScheduledNotificationsAsync();
 
   let currentNotifications = notifications?.filter(
     (m) =>
       m.content.title === "Time to shop!!" &&
       title == m.content.title &&
-      dateTime.toISOString() === m.content.data?.date
+      _dateTime.toISOString() === m.content.data?.date
   );
 
   if (currentNotifications.length > 0) {
@@ -47,18 +48,23 @@ async function setNotification(
     return;
   }
 
+  const timeaway = _dateTime.getTime() - new Date().getTime();
+
   return Notifications.scheduleNotificationAsync({
     content: {
       title,
       body,
       data: {
-        date: dateTime.toISOString(),
+        date: _dateTime.toISOString(),
       },
     },
-    trigger: {
-      date: new Date(dateTime.getTime() + 100),
-      type: Notifications.SchedulableTriggerInputTypes.DATE,
-    },
+    trigger: dateTime
+      ? {
+          seconds: timeaway > 0 ? timeaway / 1000 : 0,
+          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+          repeats: false,
+        }
+      : null,
   });
 }
 
