@@ -115,6 +115,7 @@ const Home = () => {
         setStoreStatus(response);
       }
     } catch (error) {
+      Alert.alert("Error occured when setting notification");
       console.log(error);
     }
 
