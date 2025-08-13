@@ -2,6 +2,11 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+You need to have the following install on your machine before you can proceeed to build this app.
+- Node 22+
+- Xcode
+- Android Studio - Make sure to update your sdk, command line tools and platform API
+
 ## Get started
 
 1. Install dependencies
@@ -10,41 +15,38 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npm install
    ```
 
-2. Start the app
+2. Prebuild the app
 
    ```bash
-   npx expo start
+   npx expo prebuild --clean
    ```
 
-In the output, you'll find options to open the app in a
+3. Run the app
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   npx expo run:ios
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   OR
 
-## Get a fresh project
+   ```bash
+   npx expo run:android
+   ```
 
-When you're ready, run:
+## Current Limitation
+ - Google sign works well on ios,  loads on android but does not return user details, you can test by using regular email and sign up with the credentials Email: `user@tryperdiem.com` and password `password`
 
-```bash
-npm run reset-project
-```
+ - The app still uses the token issued by auth endpoint the credentials above to get token to fetch get store times and overrides
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
+# Demo Video
 
-To learn more about developing your project with Expo, look at the following resources:
+[You can check this loom](https://www.loom.com/share/fb7388fdc467475c9ced77fa2cdc33d2)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-## Join the community
 
-Join our community of developers creating universal apps.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+
+
+

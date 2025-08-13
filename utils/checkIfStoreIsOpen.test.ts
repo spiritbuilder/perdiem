@@ -9,7 +9,7 @@ import {
 
 const fixedDate = "2025-08-13T12:00:00Z";
 
-const timezone = "America/New_York"; // fixed timezone
+const timezone = "America/New_York"; 
 
 jest.mock("moment-timezone", () => {
   const actualMoment = jest.requireActual("moment-timezone");
@@ -33,9 +33,7 @@ jest.mock("moment-timezone", () => {
   return mockMoment;
 });
 
-// jest.spyOn(moment, "tz").mockImplementation(() => {
-//   return moment(fixedDate).clone().tz(timezone);
-// });
+
 const _fixedDate = new Date("2025-08-13T12:00:00+03:00");
 
 jest.spyOn(global.Date, "now").mockImplementation(() => _fixedDate.getTime());
