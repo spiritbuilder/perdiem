@@ -11,7 +11,11 @@ interface AvatarProps {
 const Avatar = ({ icon, name }: AvatarProps) => {
   return (
     <View style={styles.container}>
-      <Image source={icon ? { uri: icon } : placeholder} style={styles.image} />
+      <Image
+        accessibilityHint="image"
+        source={icon ? { uri: icon } : placeholder}
+        style={styles.image}
+      />
       <Text style={styles.text}>{name}</Text>
     </View>
   );

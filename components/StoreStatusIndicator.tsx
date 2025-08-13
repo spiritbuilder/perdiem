@@ -45,9 +45,10 @@ const StoreStatus = ({ status, loading, firstLoaded }: StoreStatusProps) => {
   return (
     <View style={styles.container}>
       {loading && !firstLoaded ? (
-        <ActivityIndicator />
+        <ActivityIndicator accessibilityHint="loading" />
       ) : (
         <Animated.View
+        testID={"orb"}
           style={[
             styles.orb,
             status ? styles.statusColor : styles.statusColorInactive,

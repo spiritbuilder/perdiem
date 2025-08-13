@@ -19,6 +19,7 @@ const CustomButton = ({
 }: CustomButtonProps) => {
   return (
     <TouchableOpacity
+    accessibilityHint="touchable"
       style={[
         {
           ...styles.touchable,
@@ -30,7 +31,11 @@ const CustomButton = ({
       {...rest}
     >
       {loading ? (
-        <ActivityIndicator size={"large"} color={"white"} />
+        <ActivityIndicator
+          accessibilityHint="loading"
+          size={"large"}
+          color={"white"}
+        />
       ) : (
         <Text style={styles.text}>{text}</Text>
       )}

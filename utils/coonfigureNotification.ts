@@ -33,7 +33,6 @@ async function setNotification(
 
   let currentNotifications = notifications?.filter(
     (m) =>
-      m.content.title === "Time to shop!!" &&
       title == m.content.title &&
       _dateTime.toISOString() === m.content.data?.date
   );
@@ -49,6 +48,11 @@ async function setNotification(
   }
 
   const timeaway = _dateTime.getTime() - new Date().getTime();
+
+  if (dateTime && timeaway <= 0) {
+    console.warn("Cannot schedule notification in the past");
+    return;
+  }
 
   return Notifications.scheduleNotificationAsync({
     content: {

@@ -30,7 +30,6 @@ const checkIfStoreIsOpen = (
   let monthdate = date.date();
   let month = date.month();
 
-//   console.log({ month, monthdate, hours, minutes, day });
 
   const overRides = overrides.filter(
     (m) => m.month == month && m.day == monthdate
@@ -86,7 +85,7 @@ const getNextStoreOpenTime = (
   storeTimes: StoreTime[] = [],
   override: Override[] = []
 ) => {
-  let date = moment().tz("Europe/Vilnius");
+  let date = moment().tz(timezone);
 
   while (true) {
     let day = date.day() + 1;

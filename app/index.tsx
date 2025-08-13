@@ -29,6 +29,7 @@ export default function Login() {
   const router = useRouter();
   const { setAppState, user } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
   const { errors, isValid, setFieldValue, handleSubmit, touched } = useFormik({
     validationSchema: signInSchema,
     onSubmit: async (values) => {
@@ -58,6 +59,7 @@ export default function Login() {
   }, []);
 
   const handleSignInProcess = async () => {
+    setLoadingGoogle(true);
     try {
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
@@ -80,8 +82,6 @@ export default function Login() {
         setAppState?.(appDetails);
         router.navigate("/Home");
       } else {
-        // sign in was cancelled by user
-
         Alert.alert("Sign in cancelled");
       }
     } catch (error) {
@@ -90,21 +90,20 @@ export default function Login() {
         switch (error.code) {
           case statusCodes.IN_PROGRESS:
             Alert.alert("Sign in already in progress");
-            // operation (eg. sign in) already in progress
             break;
           case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
             Alert.alert("Sign in services not available");
-            // Android only, play services not available or outdated
             break;
           default:
+            console.log(error);
             Alert.alert("Something went wrong, please try again");
-          // some other error happened
         }
       } else {
         Alert.alert("Something went wrong, please try again.");
-        // an error that's not related to google sign in occurred
       }
     }
+
+    setLoadingGoogle(true);
   };
 
   return (
@@ -148,6 +147,7 @@ export default function Login() {
         <View style={styles.divider} />
 
         <CustomButton
+          loading={loadingGoogle}
           text="Sign In with Google"
           onPress={handleSignInProcess}
         />
